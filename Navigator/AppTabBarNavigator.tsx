@@ -1,8 +1,8 @@
-import {DailyScreen} from "../screens/DailyScreen.tsx";
 import {QuoteStackNavigator, FavoriteStackNavigator} from "./QuoteStackNavigator.tsx";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import MaterialDesignIcons from "@react-native-vector-icons/material-design-icons";
 import {getFocusedRouteNameFromRoute} from "@react-navigation/native";
+import DailyDrawerNavigator from "./DailyDrawerNavigator.tsx";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +19,7 @@ function AppTabBarNavigator() {
                     tabBarActiveTintColor: '#4B6FFF',
                     tabBarInactiveTintColor: '#999',
                     tabBarIcon: ({focused, color}) => {
-                        if (route.name === 'Daily') {
+                        if (route.name === 'DailyDrawer') {
                             return (
                                 <MaterialDesignIcons
                                     name={focused ? 'book' : 'book-outline'}
@@ -51,7 +51,7 @@ function AppTabBarNavigator() {
                     },
                 });
             }}>
-            <Tab.Screen name={"Daily"} component={DailyScreen} options={{headerShown: true}}/>
+            <Tab.Screen name={"DailyDrawer"} component={DailyDrawerNavigator} options={{headerShown: false}}/>
             <Tab.Screen name={"QuotesList"} component={QuoteStackNavigator} options={({route}) => ({
                 headerShown: false,
                 tabBarStyle: {display: hideTabBarFor(route) ? 'none' : 'flex'}

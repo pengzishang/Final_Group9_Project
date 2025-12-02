@@ -1,7 +1,7 @@
 // @flow
 
 import {Pressable, StyleSheet, Text, View} from "react-native";
-import StyledButton from "../components/StyledButton.tsx";
+import StyledButton from "../../components/StyledButton.tsx";
 
 type Props = {};
 export const DailyScreen = (_props: Props) => {

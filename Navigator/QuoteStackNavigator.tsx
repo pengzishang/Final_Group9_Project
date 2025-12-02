@@ -1,8 +1,8 @@
 import React from 'react';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {QuotesListScreen} from "../screens/QuotesListScreen.tsx";
-import {QuoteDetailScreen} from "../screens/QuoteDetailScreen.tsx";
-import {FavoritesScreen} from "../screens/FavoritesScreen.tsx";
+import {QuotesListScreen} from "../screens/tab/QuotesListScreen.tsx";
+import {QuoteDetailScreen} from "../screens/tab/QuoteDetailScreen.tsx";
+import {FavoritesScreen} from "../screens/tab/FavoritesScreen.tsx";
 
 export type QuoteStackParamList = {
     List: undefined;

@@ -1,16 +1,14 @@
-// @flow
-import * as React from 'react';
 import {FlatList, StyleSheet, View} from "react-native";
-import SearchBar from "../components/SearchBar.tsx";
-import {Cell} from "../components/QuoteCell.tsx";
-import {sampleQuotes} from "../database/sampleData.ts";
-import {Quote} from "../model/Quote.ts";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import {QuoteStackParamList} from "../Navigator/QuoteStackNavigator.tsx";
+import {QuoteStackParamList} from "../../Navigator/QuoteStackNavigator.tsx";
+import {Quote} from "../../model/Quote.ts";
+import {Cell} from "../../components/QuoteCell.tsx";
+import SearchBar from "../../components/SearchBar.tsx";
+import {sampleQuotes} from "../../database/sampleData.ts";
 
-type Props = NativeStackScreenProps<QuoteStackParamList, "List">;
+type Props = NativeStackScreenProps<QuoteStackParamList, "Favorites">;
 
-export const QuotesListScreen = (_props: Props) => {
+export const FavoritesScreen = (_props: Props) => {
 
     function renderItem(info: { item: Quote, index: number }) {
         return Cell({

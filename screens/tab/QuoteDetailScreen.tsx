@@ -1,9 +1,10 @@
 import {StyleSheet, Switch, Text, View} from "react-native";
-import {EditTextField} from "../components/EditTextField.tsx";
+import {EditTextField} from "../../components/EditTextField.tsx";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import {QuoteStackParamList} from "../Navigator/QuoteStackNavigator.tsx";
-import StyledButton from "../components/StyledButton.tsx";
+import {QuoteStackParamList} from "../../Navigator/QuoteStackNavigator.tsx";
+import StyledButton from "../../components/StyledButton.tsx";
 import {SafeAreaView} from "react-native-safe-area-context";
+import {TextSwitch} from "../../components/TextSwitch.tsx";
 
 type Props = NativeStackScreenProps<QuoteStackParamList, "Detail">;
 
@@ -19,12 +20,9 @@ export const QuoteDetailScreen = (_props: Props) => {
             <EditTextField title={"Source"} content={undefined} onChangeText={(text: string) => {
                 console.log(text)
             }}/>
-            <View style={styles.switch}>
-                <Text style={styles.switchText}>
-                    Favorite
-                </Text>
-                <Switch/>
-            </View>
+            <TextSwitch value={false} label={"Favorite"} onValueChange={(value: boolean) => {
+                console.log(value)
+            }} />
 
             <View style={styles.spacer}/>
             <StyledButton title={"Save"} isPrimary={true} onPress={() => {
