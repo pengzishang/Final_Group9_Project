@@ -9,6 +9,8 @@ type Prop = {
     onFavorite: () => void
 }
 
+// every cell in UI
+
 export const Cell = (props: Prop) => {
     return (
         <View style={styles.cell}>

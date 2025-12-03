@@ -7,6 +7,7 @@ type Props = {
     onPress: () => void
 }
 
+// the button in the UI
 function StyledButton({isPrimary, title, onPress}: Props) {
     return (
         <Pressable

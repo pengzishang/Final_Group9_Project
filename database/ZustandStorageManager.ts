@@ -5,6 +5,7 @@ type isFirebaseState = {
     setFirebase: (isFirebase: boolean) => void;
 }
 
+// for read the isFirebase state
 export const isFirebaseStore = create<isFirebaseState>(
     function (set) {
         return ({

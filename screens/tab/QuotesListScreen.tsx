@@ -1,5 +1,5 @@
 import {Alert, FlatList, StyleSheet, View} from "react-native";
-import SearchBar from "../../components/SearchBar.tsx";
+// import SearchBar from "../../components/SearchBar.tsx";
 import {Cell} from "../../components/QuoteCell.tsx";
 import {Quote} from "../../model/Quote.ts";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
@@ -11,6 +11,7 @@ import {isFirebaseStore} from "../../database/ZustandStorageManager.ts";
 
 type Props = NativeStackScreenProps<QuoteStackParamList, "List">;
 
+// the second screen ,
 export const QuotesListScreen = (_props: Props) => {
     const {isFirebase} = isFirebaseStore()
     const [quoteData, setQuoteData] = useState<Quote[]>([])
@@ -84,7 +85,6 @@ export const QuotesListScreen = (_props: Props) => {
 
     return (
         <View style={styles.container}>
-            <SearchBar title={"Quotes"}/>
             <FlatList data={quoteData} renderItem={renderItem} keyExtractor={keyExtractor} refreshing={refreshing}
                       onRefresh={onRefreshData}/>
         </View>

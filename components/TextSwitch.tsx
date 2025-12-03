@@ -1,6 +1,7 @@
 import {StyleSheet, Switch, Text, View} from "react-native";
 
 
+// in the detail ui
 export function TextSwitch(props: {
     label: string,
     value: boolean,

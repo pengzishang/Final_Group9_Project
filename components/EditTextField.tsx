@@ -7,6 +7,7 @@ type Prop = {
     onChangeText: (text: string) => void
 }
 
+// use in detail
 export function EditTextField(_props: Prop) {
     return (
         <View style={styles.container}>

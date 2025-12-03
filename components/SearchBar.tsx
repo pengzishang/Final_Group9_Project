@@ -1,11 +1,12 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, View} from "react-native";
+import {StyleSheet, TextInput, View} from "react-native";
 import MaterialDesignIcons from "@react-native-vector-icons/material-design-icons";
 
 type Props = {
     title: string
 }
 
+// search bar component, give up at the end, no time to do more
 function SearchBar(_props: Props) {
     return (
         <View style={styles.container}>

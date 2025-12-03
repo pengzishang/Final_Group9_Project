@@ -13,6 +13,7 @@ import {isFirebaseStore} from "../../database/ZustandStorageManager.ts";
 
 type Props = NativeStackScreenProps<QuoteStackParamList, "Favorites">;
 
+// almost the same as the list in the second screen, only some function changed
 export const FavoritesScreen = (_props: Props) => {
 
     const {isFirebase} = isFirebaseStore()

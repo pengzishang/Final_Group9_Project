@@ -5,6 +5,8 @@ import {Quote} from "../model/Quote.ts";
 
 const db = open({name: "quotes.db", location: 'default'});
 
+// this manager for sqlite get read edit insert seed data , no delete due to no time
+
 export const createLocalQuotesTable = () => {
     db.execute(`
         CREATE TABLE IF NOT EXISTS quotes (

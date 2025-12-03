@@ -1,5 +1,6 @@
 import {Quote} from "../model/Quote.ts";
 
+// the seed date put in local database
 export const sampleQuotes: Quote[] = [
     {
         id: 1,

@@ -17,6 +17,8 @@ export type QuoteStackParamList = {
 
 const {isFirebase} = isFirebaseStore()
 
+
+// the second screen, for quote list
 export function QuoteStackNavigator() {
 
 
@@ -36,6 +38,7 @@ export function QuoteStackNavigator() {
     );
 }
 
+// the third screen, reuse for favorite list
 export function FavoriteStackNavigator() {
 
     const Stack = createNativeStackNavigator<QuoteStackParamList>()

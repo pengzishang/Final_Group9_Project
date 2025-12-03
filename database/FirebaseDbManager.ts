@@ -10,7 +10,7 @@ const app = initializeApp(firebaseConfig);
 // Export database instance
 const db = getDatabase(app);
 
-
+// this manager for firebase get read edit , no insert, delete due to no time
 export const fetchAllFirebaseData = (filterByFavorite = false): Promise<Quote[]> => {
     const items = ref(db, "/")
     return get(items).then((snapshot) => {

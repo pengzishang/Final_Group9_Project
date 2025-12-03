@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View} from "react-native";
 
+
+// the second screen in the drawer
 export function AboutScreen() {
     return (
         <View style={styles.container}>

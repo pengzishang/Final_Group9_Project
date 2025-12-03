@@ -1,6 +1,6 @@
 import {Quote} from "../model/Quote.ts";
 
-
+// For daily quote. I add it at last when checking the instruction and I miss it.
 export async function fetchRandom(): Promise<Quote> {
     try {
         let response = await fetch('http://api.quotable.io/random', {

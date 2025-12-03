@@ -5,6 +5,9 @@ import {SettingScreen} from "../screens/drawer/SettingScreen.tsx";
 import {AboutScreen} from "../screens/drawer/AboutScreen.tsx";
 
 const Drawer = createDrawerNavigator()
+
+
+// the drewer in the first screen
 function DailyDrawerNavigator() {
     return (
         <Drawer.Navigator initialRouteName={"Daily"}>

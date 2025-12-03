@@ -6,6 +6,8 @@ import DailyDrawerNavigator from "./DailyDrawerNavigator.tsx";
 
 const Tab = createBottomTabNavigator();
 
+
+// the root of the app
 function AppTabBarNavigator() {
     const hideTabBarFor = (route: any) => {
         const routeName = getFocusedRouteNameFromRoute(route) ?? 'List';
@@ -51,11 +53,14 @@ function AppTabBarNavigator() {
                     },
                 });
             }}>
+            {/*// the drawer*/}
             <Tab.Screen name={"Daily Quote"} component={DailyDrawerNavigator} options={{headerShown: false}}/>
+            {/*the quote stack. include detail and list*/}
             <Tab.Screen name={"Quotes List"} component={QuoteStackNavigator} options={({route}) => ({
                 headerShown: false,
                 tabBarStyle: {display: hideTabBarFor(route) ? 'none' : 'flex'}
             })}/>
+            {/*the favorite quote stack. include detail and list*/}
             <Tab.Screen name={"Favorites"} component={FavoriteStackNavigator} options={{headerShown: false}}/>
         </Tab.Navigator>
     );

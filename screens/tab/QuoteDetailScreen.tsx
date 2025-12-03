@@ -12,6 +12,7 @@ import {isFirebaseStore} from "../../database/ZustandStorageManager.ts";
 
 type Props = NativeStackScreenProps<QuoteStackParamList, "Detail">;
 
+// the detail, can change all the value but the source
 export const QuoteDetailScreen = ({route: {params: {item, onSave}}, navigation}: Props) => {
     const {isFirebase} = isFirebaseStore()
     const [text, setText] = useState<string>(item.text)

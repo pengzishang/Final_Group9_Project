@@ -8,6 +8,9 @@ import {Quote} from "../../model/Quote.ts";
 import {fetchRandom} from "../../database/HttpManager.ts";
 
 type Props = {};
+
+
+// the first screen in the drawer
 export const DailyScreen = (_props: Props) => {
     const [quote, setQuote] = useState<Quote>(fetchRandomLocalQuotes)
 
