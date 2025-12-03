@@ -7,8 +7,6 @@ export const sampleQuotes: Quote[] = [
         author: "Steve Jobs",
         source: "Stanford Commencement Speech",
         isFavorite: true,
-        createdAt: "2025-01-10T10:00:00Z",
-        updatedAt: "2025-01-10T10:00:00Z",
     },
     {
         id: 2,
@@ -16,8 +14,6 @@ export const sampleQuotes: Quote[] = [
         author: "Albert Einstein",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-11T09:30:00Z",
-        updatedAt: "2025-01-11T09:30:00Z",
     },
     {
         id: 3,
@@ -25,8 +21,6 @@ export const sampleQuotes: Quote[] = [
         author: "Steve Jobs",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-12T15:20:00Z",
-        updatedAt: "2025-01-12T15:20:00Z",
     },
     {
         id: 4,
@@ -34,8 +28,6 @@ export const sampleQuotes: Quote[] = [
         author: "Leonardo da Vinci",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-12T16:00:00Z",
-        updatedAt: "2025-01-12T16:00:00Z",
     },
     {
         id: 5,
@@ -43,8 +35,6 @@ export const sampleQuotes: Quote[] = [
         author: "Winston Churchill",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-13T11:45:00Z",
-        updatedAt: "2025-01-13T11:45:00Z",
     },
     {
         id: 6,
@@ -52,8 +42,6 @@ export const sampleQuotes: Quote[] = [
         author: "Eleanor Roosevelt",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-14T12:00:00Z",
-        updatedAt: "2025-01-14T12:00:00Z",
     },
     {
         id: 7,
@@ -61,8 +49,6 @@ export const sampleQuotes: Quote[] = [
         author: "Oscar Wilde",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-15T08:55:00Z",
-        updatedAt: "2025-01-15T08:55:00Z",
     },
     {
         id: 8,
@@ -70,8 +56,6 @@ export const sampleQuotes: Quote[] = [
         author: "Alan Kay",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-15T09:10:00Z",
-        updatedAt: "2025-01-15T09:10:00Z",
     },
     {
         id: 9,
@@ -79,8 +63,6 @@ export const sampleQuotes: Quote[] = [
         author: "John Lennon",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-16T10:30:00Z",
-        updatedAt: "2025-01-16T10:30:00Z",
     },
     {
         id: 10,
@@ -88,8 +70,6 @@ export const sampleQuotes: Quote[] = [
         author: "Dalai Lama",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-16T11:00:00Z",
-        updatedAt: "2025-01-16T11:00:00Z",
     },
     {
         id: 11,
@@ -97,8 +77,6 @@ export const sampleQuotes: Quote[] = [
         author: "Walt Whitman",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-17T12:40:00Z",
-        updatedAt: "2025-01-17T12:40:00Z",
     },
     {
         id: 12,
@@ -106,8 +84,6 @@ export const sampleQuotes: Quote[] = [
         author: "Walt Disney",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-17T14:20:00Z",
-        updatedAt: "2025-01-17T14:20:00Z",
     },
     {
         id: 13,
@@ -115,8 +91,6 @@ export const sampleQuotes: Quote[] = [
         author: "Nelson Mandela",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-18T09:15:00Z",
-        updatedAt: "2025-01-18T09:15:00Z",
     },
     {
         id: 14,
@@ -124,8 +98,6 @@ export const sampleQuotes: Quote[] = [
         author: "Oscar Wilde",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-18T09:40:00Z",
-        updatedAt: "2025-01-18T09:40:00Z",
     },
     {
         id: 15,
@@ -133,8 +105,6 @@ export const sampleQuotes: Quote[] = [
         author: "Earl Nightingale",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-19T07:30:00Z",
-        updatedAt: "2025-01-19T07:30:00Z",
     },
     {
         id: 16,
@@ -142,8 +112,6 @@ export const sampleQuotes: Quote[] = [
         author: "Ralph Waldo Emerson",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-19T08:20:00Z",
-        updatedAt: "2025-01-19T08:20:00Z",
     },
     {
         id: 17,
@@ -151,8 +119,6 @@ export const sampleQuotes: Quote[] = [
         author: "Aristotle",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-19T10:15:00Z",
-        updatedAt: "2025-01-19T10:15:00Z",
     },
     {
         id: 18,
@@ -160,8 +126,6 @@ export const sampleQuotes: Quote[] = [
         author: "William James",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-20T12:15:00Z",
-        updatedAt: "2025-01-20T12:15:00Z",
     },
     {
         id: 19,
@@ -169,8 +133,6 @@ export const sampleQuotes: Quote[] = [
         author: "Confucius",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-20T13:55:00Z",
-        updatedAt: "2025-01-20T13:55:00Z",
     },
     {
         id: 20,
@@ -178,8 +140,6 @@ export const sampleQuotes: Quote[] = [
         author: "Theodore Roosevelt",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-20T15:00:00Z",
-        updatedAt: "2025-01-20T15:00:00Z",
     },
     {
         id: 21,
@@ -187,8 +147,6 @@ export const sampleQuotes: Quote[] = [
         author: "Oprah Winfrey",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-21T09:00:00Z",
-        updatedAt: "2025-01-21T09:00:00Z",
     },
     {
         id: 22,
@@ -196,8 +154,6 @@ export const sampleQuotes: Quote[] = [
         author: "Lao Tzu",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-21T09:20:00Z",
-        updatedAt: "2025-01-21T09:20:00Z",
     },
     {
         id: 23,
@@ -205,8 +161,6 @@ export const sampleQuotes: Quote[] = [
         author: "Aristotle",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-22T08:30:00Z",
-        updatedAt: "2025-01-22T08:30:00Z",
     },
     {
         id: 24,
@@ -214,8 +168,6 @@ export const sampleQuotes: Quote[] = [
         author: "Buddha",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-22T09:30:00Z",
-        updatedAt: "2025-01-22T09:30:00Z",
     },
     {
         id: 25,
@@ -223,8 +175,6 @@ export const sampleQuotes: Quote[] = [
         author: "Confucius",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-23T10:10:00Z",
-        updatedAt: "2025-01-23T10:10:00Z",
     },
     {
         id: 26,
@@ -232,8 +182,6 @@ export const sampleQuotes: Quote[] = [
         author: "Pablo Picasso",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-23T11:25:00Z",
-        updatedAt: "2025-01-23T11:25:00Z",
     },
     {
         id: 27,
@@ -241,8 +189,6 @@ export const sampleQuotes: Quote[] = [
         author: "Wayne Gretzky",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-23T12:00:00Z",
-        updatedAt: "2025-01-23T12:00:00Z",
     },
     {
         id: 28,
@@ -250,8 +196,6 @@ export const sampleQuotes: Quote[] = [
         author: "Abraham Lincoln",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-24T09:00:00Z",
-        updatedAt: "2025-01-24T09:00:00Z",
     },
     {
         id: 29,
@@ -259,8 +203,6 @@ export const sampleQuotes: Quote[] = [
         author: "Henry Ford",
         source: "",
         isFavorite: true,
-        createdAt: "2025-01-24T10:40:00Z",
-        updatedAt: "2025-01-24T10:40:00Z",
     },
     {
         id: 30,
@@ -268,7 +210,5 @@ export const sampleQuotes: Quote[] = [
         author: "Aristotle",
         source: "",
         isFavorite: false,
-        createdAt: "2025-01-24T11:10:00Z",
-        updatedAt: "2025-01-24T11:10:00Z",
     },
 ];

@@ -4,6 +4,4 @@ export type Quote = {
     author: string;
     source?: string;
     isFavorite: boolean;
-    createdAt: string;
-    updatedAt: string;
 };

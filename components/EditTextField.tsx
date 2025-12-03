@@ -1,5 +1,4 @@
 import React from 'react';
-import {Quote} from "../model/Quote.ts";
 import {StyleSheet, Text, TextInput, View} from "react-native";
 
 type Prop = {

@@ -3,21 +3,22 @@ import * as React from 'react';
 import {FlatList, StyleSheet, View} from "react-native";
 import SearchBar from "../../components/SearchBar.tsx";
 import {Cell} from "../../components/QuoteCell.tsx";
-import {sampleQuotes} from "../../database/sampleData.ts";
 import {Quote} from "../../model/Quote.ts";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {QuoteStackParamList} from "../../Navigator/QuoteStackNavigator.tsx";
+import {fetchAllQuotes} from "../../database/LocalDbManager.ts";
 
 type Props = NativeStackScreenProps<QuoteStackParamList, "List">;
 
 export const QuotesListScreen = (_props: Props) => {
 
+    let localData = fetchAllQuotes()
     function renderItem(info: { item: Quote, index: number }) {
         return Cell({
             item: info.item,
             onDetail: () => {
                 _props.navigation.navigate("Detail", {
-                    // item: info.item
+                    item: info.item
                 })
             },
             onFavorite: () => {
@@ -33,7 +34,7 @@ export const QuotesListScreen = (_props: Props) => {
     return (
         <View style={styles.container}>
             <SearchBar title={"Quotes"}/>
-            <FlatList data={sampleQuotes} renderItem={renderItem} keyExtractor={keyExtractor}/>
+            <FlatList data={localData} renderItem={renderItem} keyExtractor={keyExtractor}/>
         </View>
     );
 };

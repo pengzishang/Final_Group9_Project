@@ -3,11 +3,12 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {QuotesListScreen} from "../screens/tab/QuotesListScreen.tsx";
 import {QuoteDetailScreen} from "../screens/tab/QuoteDetailScreen.tsx";
 import {FavoritesScreen} from "../screens/tab/FavoritesScreen.tsx";
+import {Quote} from "../model/Quote.ts";
 
 export type QuoteStackParamList = {
     List: undefined;
     Detail: {
-        // item: Quote;
+        item: Quote;
     };
     Favorites: undefined;
 };
