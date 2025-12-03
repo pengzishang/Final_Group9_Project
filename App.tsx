@@ -11,11 +11,11 @@ import {
 } from 'react-native-safe-area-context';
 import {NavigationContainer} from "@react-navigation/native";
 import AppTabBarNavigator from "./Navigator/AppTabBarNavigator.tsx";
-import {createQuotesTable} from "./database/LocalDbManager.ts";
+import {createLocalQuotesTable} from "./database/LocalDbManager.ts";
 
 function App() {
     const isDarkMode = useColorScheme() === 'dark';
-    createQuotesTable();
+    createLocalQuotesTable();
     return (
         <SafeAreaProvider>
             <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'}/>

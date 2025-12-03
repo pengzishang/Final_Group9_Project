@@ -1,31 +1,71 @@
-import {FlatList, StyleSheet, View} from "react-native";
+import {Alert, FlatList, StyleSheet, View} from "react-native";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {QuoteStackParamList} from "../../Navigator/QuoteStackNavigator.tsx";
 import {Quote} from "../../model/Quote.ts";
 import {Cell} from "../../components/QuoteCell.tsx";
-import SearchBar from "../../components/SearchBar.tsx";
-import {fetchAllFavoriteQuotes} from "../../database/LocalDbManager.ts";
-import {useState} from "react";
+
+import {fetchAllLocalQuotes} from "../../database/LocalDbManager.ts";
+import {useCallback, useEffect, useState} from "react";
+import {editFirebaseQuote, fetchAllFirebaseData} from "../../database/FirebaseDbManager.ts";
+import * as React from "react";
+import {useIsFocused} from "@react-navigation/core";
 
 type Props = NativeStackScreenProps<QuoteStackParamList, "Favorites">;
 
 export const FavoritesScreen = (_props: Props) => {
 
-    const [localFavoriteData, setLocalFavoriteData] = useState<Quote[]>(fetchAllFavoriteQuotes())
+    const isFirebase = true
+    const [quoteData, setQuoteData] = useState<Quote[]>([])
     const [refreshing, setRefreshing] = useState(false)
+    const isFocused = useIsFocused();
+
+    const onRefreshData = useCallback(() => {
+        setRefreshing(true);
+        if (isFirebase) {
+            fetchAllFirebaseData(true)
+                .then(values => {
+                    setQuoteData(values);
+                })
+                .catch(reason => {
+                    Alert.alert('yyyy', String(reason));
+                })
+                .finally(() => {
+                    setRefreshing(false);
+                });
+        } else {
+            try {
+                const values = fetchAllLocalQuotes(true)
+                setQuoteData(values);
+            } catch (err) {
+                Alert.alert('xxx', String(err));
+            } finally {
+                setRefreshing(false);
+            }
+        }
+    }, [isFirebase]);
+
+    useEffect(() => {
+        if (isFocused) {
+            onRefreshData();
+        }
+    }, [onRefreshData, isFocused]);
 
     function renderItem(info: { item: Quote, index: number }) {
         return Cell({
             item: info.item,
             onDetail: () => {
+                // Alert.alert("eeee", `${info.item.isFavorite}`)
                 _props.navigation.navigate("Detail", {
                     item: info.item, onSave: () => {
-                        setLocalFavoriteData(fetchAllFavoriteQuotes)
+                        onRefreshData()
                     }
                 })
             },
             onFavorite: () => {
-
+                editFirebaseQuote(info.item.id, info.item.text, info.item.author, !info.item.isFavorite)
+                    .catch((reason) => {
+                    Alert.alert("Warning",reason)
+                })
             }
         })
     }
@@ -34,17 +74,10 @@ export const FavoritesScreen = (_props: Props) => {
         return item.id.toString()
     }
 
-    const onRefresh = () => {
-        setRefreshing(true)
-        setLocalFavoriteData(fetchAllFavoriteQuotes)
-        setRefreshing(false)
-    };
-
-
     return (
         <View style={styles.container}>
-            <SearchBar title={"Quotes"}/>
-            <FlatList data={localFavoriteData} renderItem={renderItem} refreshing={refreshing} keyExtractor={keyExtractor} onRefresh={onRefresh} />
+            <FlatList data={quoteData} renderItem={renderItem} keyExtractor={keyExtractor} refreshing={refreshing}
+                      onRefresh={onRefreshData}/>
         </View>
     );
 };

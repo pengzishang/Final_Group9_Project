@@ -1,4 +1,4 @@
-import {StyleSheet, View} from "react-native";
+import {Alert, StyleSheet, View} from "react-native";
 import {EditTextField} from "../../components/EditTextField.tsx";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {QuoteStackParamList} from "../../Navigator/QuoteStackNavigator.tsx";
@@ -6,32 +6,46 @@ import StyledButton from "../../components/StyledButton.tsx";
 import {SafeAreaView} from "react-native-safe-area-context";
 import {TextSwitch} from "../../components/TextSwitch.tsx";
 import {useState} from "react";
-import {editQuote} from "../../database/LocalDbManager.ts";
+import {editLocalQuote} from "../../database/LocalDbManager.ts";
+import {editFirebaseQuote} from "../../database/FirebaseDbManager.ts";
 
 type Props = NativeStackScreenProps<QuoteStackParamList, "Detail">;
 
 export const QuoteDetailScreen = ({route: {params: {item, onSave}}, navigation}: Props) => {
+    const isFirebase = true
     const [text, setText] = useState<string>(item.text)
     const [author, setAuthor] = useState<string>(item.author)
     const [favorite, setFavorite] = useState<boolean>(item.isFavorite)
+
+    const onTap = async () => {
+        if (!isFirebase) {
+            editLocalQuote(text, author, favorite, item.id);
+            onSave();
+            navigation.goBack();
+        } else {
+            editFirebaseQuote(item.id, text, author, favorite).then(()=>{
+                onSave();
+                navigation.goBack();
+            }).catch((reason) =>{
+                Alert.alert("Warning", reason)
+            })
+        }
+    }
+
     return (
         <SafeAreaView style={styles.root}>
             <EditTextField title={"Quote"} content={text} onChangeText={setText}/>
             <EditTextField title={"Author"} content={author} onChangeText={setAuthor}/>
             <TextSwitch value={favorite} label={"Favorite"} onValueChange={(value) => {
-                // Alert.alert("rr",`before:${favorite} after:${value}`)
+                // TODO: favorite state not display in switch
                 setFavorite(value)
             }}/>
 
             <View style={styles.spacer}/>
             <StyledButton title={"Save"} isPrimary={true} onPress={() => {
-                editQuote(text, author, favorite, item.id)
-                navigation.goBack()
-                onSave()
+                onTap()
             }}/>
-            <StyledButton title={"Cancel"} isPrimary={false} onPress={() => {
-                navigation.goBack()
-            }}/>
+            <StyledButton title={"Cancel"} isPrimary={false} onPress={() => navigation.goBack()}/>
         </SafeAreaView>
     );
 };

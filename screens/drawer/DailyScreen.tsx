@@ -3,12 +3,12 @@
 import {Alert, StyleSheet, Text, View} from "react-native";
 import StyledButton from "../../components/StyledButton.tsx";
 import {useState} from "react";
-import {editQuote, fetchRandomQuotes} from "../../database/LocalDbManager.ts";
+import {editLocalQuote, fetchRandomLocalQuotes} from "../../database/LocalDbManager.ts";
 import {Quote} from "../../model/Quote.ts";
 
 type Props = {};
 export const DailyScreen = (_props: Props) => {
-    const [quote, setQuote] = useState<Quote>(fetchRandomQuotes)
+    const [quote, setQuote] = useState<Quote>(fetchRandomLocalQuotes)
 
     return (
         <View style={styles.container}>
@@ -17,11 +17,11 @@ export const DailyScreen = (_props: Props) => {
                 <Text style={styles.content}>{quote.text}</Text>
             </View>
             <StyledButton title={"Next Quote"} isPrimary={true} onPress={() => {
-                setQuote(fetchRandomQuotes)
+                setQuote(fetchRandomLocalQuotes)
             }}/>
 
             <StyledButton title={"Save to My Favorite"} isPrimary={false} onPress={() => {
-                editQuote(quote.text, quote.author, !quote.isFavorite, quote.id)
+                editLocalQuote(quote.text, quote.author, !quote.isFavorite, quote.id)
                 Alert.alert("Add to favorite","Success")
             }}/>
 
