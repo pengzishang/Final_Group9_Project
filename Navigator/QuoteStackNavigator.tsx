@@ -4,6 +4,7 @@ import {QuotesListScreen} from "../screens/tab/QuotesListScreen.tsx";
 import {QuoteDetailScreen} from "../screens/tab/QuoteDetailScreen.tsx";
 import {FavoritesScreen} from "../screens/tab/FavoritesScreen.tsx";
 import {Quote} from "../model/Quote.ts";
+import {isFirebaseStore} from "../database/ZustandStorageManager.ts";
 
 export type QuoteStackParamList = {
     List: undefined;
@@ -14,14 +15,23 @@ export type QuoteStackParamList = {
     Favorites: undefined;
 };
 
+const {isFirebase} = isFirebaseStore()
+
 export function QuoteStackNavigator() {
+
 
     const Stack = createNativeStackNavigator<QuoteStackParamList>()
 
     return (
         <Stack.Navigator initialRouteName={"List"}>
-            <Stack.Screen name="List" component={QuotesListScreen}/>
-            <Stack.Screen name="Detail" component={QuoteDetailScreen}/>
+            <Stack.Screen
+                name="List"
+                options={{title: isFirebase ? "List(Firebase)" : "List(Local SQLite)"}}
+                component={QuotesListScreen}/>
+            <Stack.Screen
+                name="Detail"
+                options={{title: isFirebase ? "Detail(Firebase)" : "Detail(Local SQLite)"}}
+                component={QuoteDetailScreen}/>
         </Stack.Navigator>
     );
 }
@@ -31,8 +41,13 @@ export function FavoriteStackNavigator() {
     const Stack = createNativeStackNavigator<QuoteStackParamList>()
     return (
         <Stack.Navigator initialRouteName={"Favorites"}>
-            <Stack.Screen name="Favorites" component={FavoritesScreen}/>
-            <Stack.Screen name="Detail" component={QuoteDetailScreen}/>
+            <Stack.Screen name="Favorites"
+                          options={{title: isFirebase ? "Favorites(Firebase)" : "Favorites(Local SQLite)"}}
+                          component={FavoritesScreen}/>
+            <Stack.Screen
+                name="Detail"
+                options={{title: isFirebase ? "Detail(Firebase)" : "Detail(Local SQLite)"}}
+                component={QuoteDetailScreen}/>
         </Stack.Navigator>
     );
 }

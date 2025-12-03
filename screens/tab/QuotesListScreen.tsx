@@ -7,11 +7,12 @@ import {QuoteStackParamList} from "../../Navigator/QuoteStackNavigator.tsx";
 import {editLocalQuote, fetchAllLocalQuotes} from "../../database/LocalDbManager.ts";
 import {useCallback, useEffect, useState} from "react";
 import {editFirebaseQuote, fetchAllFirebaseData} from "../../database/FirebaseDbManager.ts";
+import {isFirebaseStore} from "../../database/ZustandStorageManager.ts";
 
 type Props = NativeStackScreenProps<QuoteStackParamList, "List">;
 
 export const QuotesListScreen = (_props: Props) => {
-    const isFirebase = true
+    const {isFirebase} = isFirebaseStore()
     const [quoteData, setQuoteData] = useState<Quote[]>([])
     const [refreshing, setRefreshing] = useState(false)
 

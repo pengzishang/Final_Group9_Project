@@ -9,12 +9,13 @@ import {useCallback, useEffect, useState} from "react";
 import {editFirebaseQuote, fetchAllFirebaseData} from "../../database/FirebaseDbManager.ts";
 import * as React from "react";
 import {useIsFocused} from "@react-navigation/core";
+import {isFirebaseStore} from "../../database/ZustandStorageManager.ts";
 
 type Props = NativeStackScreenProps<QuoteStackParamList, "Favorites">;
 
 export const FavoritesScreen = (_props: Props) => {
 
-    const isFirebase = true
+    const {isFirebase} = isFirebaseStore()
     const [quoteData, setQuoteData] = useState<Quote[]>([])
     const [refreshing, setRefreshing] = useState(false)
     const isFocused = useIsFocused();

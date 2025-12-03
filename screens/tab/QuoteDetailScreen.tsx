@@ -8,11 +8,12 @@ import {TextSwitch} from "../../components/TextSwitch.tsx";
 import {useState} from "react";
 import {editLocalQuote} from "../../database/LocalDbManager.ts";
 import {editFirebaseQuote} from "../../database/FirebaseDbManager.ts";
+import {isFirebaseStore} from "../../database/ZustandStorageManager.ts";
 
 type Props = NativeStackScreenProps<QuoteStackParamList, "Detail">;
 
 export const QuoteDetailScreen = ({route: {params: {item, onSave}}, navigation}: Props) => {
-    const isFirebase = true
+    const {isFirebase} = isFirebaseStore()
     const [text, setText] = useState<string>(item.text)
     const [author, setAuthor] = useState<string>(item.author)
     const [favorite, setFavorite] = useState<boolean>(item.isFavorite)
