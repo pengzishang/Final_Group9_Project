@@ -10,7 +10,7 @@ import {editQuote} from "../../database/LocalDbManager.ts";
 
 type Props = NativeStackScreenProps<QuoteStackParamList, "Detail">;
 
-export const QuoteDetailScreen = ({route:{params:{item}}, navigation}: Props) => {
+export const QuoteDetailScreen = ({route: {params: {item, onSave}}, navigation}: Props) => {
     const [text, setText] = useState<string>(item.text)
     const [author, setAuthor] = useState<string>(item.author)
     const [favorite, setFavorite] = useState<boolean>(item.isFavorite)
@@ -18,12 +18,16 @@ export const QuoteDetailScreen = ({route:{params:{item}}, navigation}: Props) =>
         <SafeAreaView style={styles.root}>
             <EditTextField title={"Quote"} content={text} onChangeText={setText}/>
             <EditTextField title={"Author"} content={author} onChangeText={setAuthor}/>
-            <TextSwitch value={favorite} label={"Favorite"} onValueChange={setFavorite} />
+            <TextSwitch value={favorite} label={"Favorite"} onValueChange={(value) => {
+                // Alert.alert("rr",`before:${favorite} after:${value}`)
+                setFavorite(value)
+            }}/>
 
             <View style={styles.spacer}/>
             <StyledButton title={"Save"} isPrimary={true} onPress={() => {
-                editQuote(text,author,favorite,item.id)
+                editQuote(text, author, favorite, item.id)
                 navigation.goBack()
+                onSave()
             }}/>
             <StyledButton title={"Cancel"} isPrimary={false} onPress={() => {
                 navigation.goBack()

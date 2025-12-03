@@ -1,23 +1,29 @@
 // @flow
 
-import {Pressable, StyleSheet, Text, View} from "react-native";
+import {Alert, StyleSheet, Text, View} from "react-native";
 import StyledButton from "../../components/StyledButton.tsx";
+import {useState} from "react";
+import {editQuote, fetchRandomQuotes} from "../../database/LocalDbManager.ts";
+import {Quote} from "../../model/Quote.ts";
 
 type Props = {};
 export const DailyScreen = (_props: Props) => {
+    const [quote, setQuote] = useState<Quote>(fetchRandomQuotes)
+
     return (
         <View style={styles.container}>
             <View style={styles.top}>
                 <Text style={styles.title}>Quote of the day:</Text>
-                <Text>Quote of the day</Text>
+                <Text style={styles.content}>{quote.text}</Text>
             </View>
             <StyledButton title={"Next Quote"} isPrimary={true} onPress={() => {
-                // TODO: Next quote handler
-            }} />
+                setQuote(fetchRandomQuotes)
+            }}/>
 
-            <StyledButton title={"Save to My Quotes"} isPrimary={false} onPress={() => {
-                // TODO: Next quote handler
-            }} />
+            <StyledButton title={"Save to My Favorite"} isPrimary={false} onPress={() => {
+                editQuote(quote.text, quote.author, !quote.isFavorite, quote.id)
+                Alert.alert("Add to favorite","Success")
+            }}/>
 
         </View>
     );
@@ -34,7 +40,7 @@ const styles = StyleSheet.create({
     top: {
         margin: 30,
         borderRadius: 10,
-        padding: 10,
+        padding: 15,
         backgroundColor: '#CAA996',
         alignItems: 'center',
         justifyContent: 'center',
@@ -44,35 +50,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#fff',
     },
-    buttonNext: {
-        marginHorizontal: 30,
-        marginTop: 12,
-        backgroundColor: '#4B6FFF',
-        paddingVertical: 10,
-        paddingHorizontal: 14,
-        borderRadius: 8,
-        alignItems: 'center',
-    },
-    buttonPressed: {
-        opacity: 0.85,
-    },
-    buttonNextText: {
-        color: '#fff',
-        fontWeight: '600',
-        fontSize: 16,
-    },
-    buttonFavorite: {
-        marginHorizontal: 30,
-        marginTop: 12,
-        backgroundColor: '#E8EBF2',
-        paddingVertical: 10,
-        paddingHorizontal: 14,
-        borderRadius: 8,
-        alignItems: 'center',
-    },
-    buttonFavoriteText: {
+    content: {
+        fontSize: 24,
+        fontWeight: 'bold',
         color: '#000',
-        fontWeight: '600',
-        fontSize: 16,
+        textAlign: "center",
+        marginVertical: 20
     },
 });

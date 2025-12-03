@@ -48,6 +48,18 @@ export const fetchAllQuotes = (): Quote[] => {
     return ((result.rows as any)?._array ?? []) as Quote[];
 };
 
+export const fetchAllFavoriteQuotes = (): Quote[] => {
+    const result = db.execute(
+        'SELECT * FROM quotes WHERE isFavorite = 1 ORDER BY id DESC;');
+    return ((result.rows as any)?._array ?? []) as Quote[];
+};
+
+export const fetchRandomQuotes = (): Quote => {
+    const result = fetchAllQuotes()
+    const idx = Math.floor(Math.random() * result.length)
+    return result[idx]
+};
+
 export const editQuote = (text: string, author: string, isFavorite: boolean, id: number) => {
     db.execute(
         `

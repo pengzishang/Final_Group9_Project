@@ -9,6 +9,7 @@ export type QuoteStackParamList = {
     List: undefined;
     Detail: {
         item: Quote;
+        onSave: () => void
     };
     Favorites: undefined;
 };

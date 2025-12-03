@@ -1,4 +1,4 @@
-import {Alert, Pressable, StyleSheet, Text, View} from "react-native";
+import {Pressable, StyleSheet, Text, View} from "react-native";
 import {Quote} from "../model/Quote.ts";
 import MaterialDesignIcons from "@react-native-vector-icons/material-design-icons";
 
@@ -16,7 +16,7 @@ export const Cell = (props: Prop) => {
                 <Text style={styles.text}>{props.item.text}</Text>
                 <Text style={styles.author}>{props.item.author}</Text>
             </Pressable>
-            <MaterialDesignIcons name={"star-outline"} size={24} color={"#111"} style={styles.icon} onPress={props.onFavorite} />
+            <MaterialDesignIcons name={props.item.isFavorite ? "star" : "star-outline"} size={24} color={"#111"} style={styles.icon} onPress={props.onFavorite} />
         </View>
     )
 }
