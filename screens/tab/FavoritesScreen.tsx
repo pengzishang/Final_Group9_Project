@@ -27,8 +27,8 @@ export const FavoritesScreen = (_props: Props) => {
                 .then(values => {
                     setQuoteData(values);
                 })
-                .catch(reason => {
-                    Alert.alert('yyyy', String(reason));
+                .catch(() => {
+                    Alert.alert('Warning', "Something wrong");
                 })
                 .finally(() => {
                     setRefreshing(false);
@@ -37,8 +37,8 @@ export const FavoritesScreen = (_props: Props) => {
             try {
                 const values = fetchAllLocalQuotes(true)
                 setQuoteData(values);
-            } catch (err) {
-                Alert.alert('xxx', String(err));
+            } catch {
+                Alert.alert('Warning', "some thing wrong");
             } finally {
                 setRefreshing(false);
             }
@@ -64,9 +64,9 @@ export const FavoritesScreen = (_props: Props) => {
             },
             onFavorite: () => {
                 editFirebaseQuote(info.item.id, info.item.text, info.item.author, !info.item.isFavorite)
-                    .catch((reason) => {
-                    Alert.alert("Warning",reason)
-                })
+                    .catch(() => {
+                        Alert.alert("Warning", "something wrong")
+                    })
             }
         })
     }

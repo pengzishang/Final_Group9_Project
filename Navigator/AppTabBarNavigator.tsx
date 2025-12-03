@@ -13,13 +13,13 @@ function AppTabBarNavigator() {
     };
     return (
         <Tab.Navigator
-            initialRouteName={"QuotesList"}
+            initialRouteName={"Daily Quote"}
             screenOptions={({route}) => {
                 return ({
                     tabBarActiveTintColor: '#4B6FFF',
                     tabBarInactiveTintColor: '#999',
                     tabBarIcon: ({focused, color}) => {
-                        if (route.name === 'DailyDrawer') {
+                        if (route.name === 'Daily Quote') {
                             return (
                                 <MaterialDesignIcons
                                     name={focused ? 'book' : 'book-outline'}
@@ -29,7 +29,7 @@ function AppTabBarNavigator() {
                             );
                         }
 
-                        if (route.name === 'QuotesList') {
+                        if (route.name === 'Quotes List') {
                             return (
                                 <MaterialDesignIcons
                                     name={focused ? 'format-list-bulleted' : 'format-list-bulleted'}
@@ -51,8 +51,8 @@ function AppTabBarNavigator() {
                     },
                 });
             }}>
-            <Tab.Screen name={"DailyDrawer"} component={DailyDrawerNavigator} options={{headerShown: false}}/>
-            <Tab.Screen name={"QuotesList"} component={QuoteStackNavigator} options={({route}) => ({
+            <Tab.Screen name={"Daily Quote"} component={DailyDrawerNavigator} options={{headerShown: false}}/>
+            <Tab.Screen name={"Quotes List"} component={QuoteStackNavigator} options={({route}) => ({
                 headerShown: false,
                 tabBarStyle: {display: hideTabBarFor(route) ? 'none' : 'flex'}
             })}/>

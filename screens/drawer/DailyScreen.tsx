@@ -3,8 +3,9 @@
 import {Alert, StyleSheet, Text, View} from "react-native";
 import StyledButton from "../../components/StyledButton.tsx";
 import {useState} from "react";
-import {editLocalQuote, fetchRandomLocalQuotes} from "../../database/LocalDbManager.ts";
+import {fetchRandomLocalQuotes} from "../../database/LocalDbManager.ts";
 import {Quote} from "../../model/Quote.ts";
+import {fetchRandom} from "../../database/HttpManager.ts";
 
 type Props = {};
 export const DailyScreen = (_props: Props) => {
@@ -15,14 +16,14 @@ export const DailyScreen = (_props: Props) => {
             <View style={styles.top}>
                 <Text style={styles.title}>Quote of the day:</Text>
                 <Text style={styles.content}>{quote.text}</Text>
+                <Text style={styles.author}>by {quote.author}</Text>
             </View>
             <StyledButton title={"Next Quote"} isPrimary={true} onPress={() => {
-                setQuote(fetchRandomLocalQuotes)
-            }}/>
-
-            <StyledButton title={"Save to My Favorite"} isPrimary={false} onPress={() => {
-                editLocalQuote(quote.text, quote.author, !quote.isFavorite, quote.id)
-                Alert.alert("Add to favorite","Success")
+                fetchRandom().then((result) => {
+                    setQuote(result)
+                }).catch(() => {
+                    Alert.alert("Warning", "something wrong")
+                })
             }}/>
 
         </View>
@@ -57,4 +58,11 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginVertical: 20
     },
+    author: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#000',
+        textAlign: "right",
+        marginVertical: 20
+    }
 });

@@ -27,8 +27,8 @@ export const QuoteDetailScreen = ({route: {params: {item, onSave}}, navigation}:
             editFirebaseQuote(item.id, text, author, favorite).then(()=>{
                 onSave();
                 navigation.goBack();
-            }).catch((reason) =>{
-                Alert.alert("Warning", reason)
+            }).catch(() =>{
+                Alert.alert("Warning", "something wrong")
             })
         }
     }

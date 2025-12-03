@@ -23,8 +23,8 @@ export const QuotesListScreen = (_props: Props) => {
                 .then(values => {
                     setQuoteData(values);
                 })
-                .catch(reason => {
-                    Alert.alert('yyyy', String(reason));
+                .catch(() => {
+                    Alert.alert('Warning', "something wrong");
                 })
                 .finally(() => {
                     setRefreshing(false);
@@ -33,8 +33,8 @@ export const QuotesListScreen = (_props: Props) => {
             try {
                 const values = fetchAllLocalQuotes();
                 setQuoteData(values);
-            } catch (err) {
-                Alert.alert('xxx', String(err));
+            } catch {
+                Alert.alert('Warning', "something wrong");
             } finally {
                 setRefreshing(false);
             }
@@ -50,8 +50,8 @@ export const QuotesListScreen = (_props: Props) => {
         } else {
             editFirebaseQuote(item.id, item.text, item.author, !item.isFavorite).then(() => {
                 onRefreshData()
-            }).catch((reason) => {
-                Alert.alert("Warning", reason)
+            }).catch(() => {
+                Alert.alert("Warning", "something wrong")
             })
         }
     }
@@ -65,7 +65,7 @@ export const QuotesListScreen = (_props: Props) => {
         return Cell({
             item: info.item,
             onDetail: () => {
-                Alert.alert("eeee", `${info.item.isFavorite}`)
+                // Alert.alert("eeee", `${info.item.isFavorite}`)
                 _props.navigation.navigate("Detail", {
                     item: info.item, onSave: () => {
                         onRefreshData()
