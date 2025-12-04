@@ -1,6 +1,6 @@
 // @flow
 
-import {Alert, StyleSheet, Text, View} from "react-native";
+import {Alert, Image, StyleSheet, Text, View} from "react-native";
 import StyledButton from "../../components/StyledButton.tsx";
 import {useState} from "react";
 import {fetchRandomLocalQuotes} from "../../database/LocalDbManager.ts";
@@ -16,6 +16,14 @@ export const DailyScreen = (_props: Props) => {
 
     return (
         <View style={styles.container}>
+
+            <Image
+                source={require("../../img/logo.png")}
+                style={styles.logo}
+                resizeMode="contain"
+            />
+            <Text style={styles.logoText}>This is Logo</Text>
+
             <View style={styles.top}>
                 <Text style={styles.title}>Quote of the day:</Text>
                 <Text style={styles.content}>{quote.text}</Text>
@@ -67,5 +75,19 @@ const styles = StyleSheet.create({
         color: '#000',
         textAlign: "right",
         marginVertical: 20
+    },
+    logo: {
+        width: 100,
+        height: 100,
+        alignSelf: "center",
+        borderRadius: 30,
+        marginTop: 30,
+        marginBottom: 10,
+    },
+    logoText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#000',
+        textAlign: "center",
     }
 });
