@@ -4,7 +4,7 @@ import {QuoteStackParamList} from "../../Navigator/QuoteStackNavigator.tsx";
 import {Quote} from "../../model/Quote.ts";
 import {Cell} from "../../components/QuoteCell.tsx";
 
-import {fetchAllLocalQuotes} from "../../database/LocalDbManager.ts";
+import {editLocalQuote, fetchAllLocalQuotes} from "../../database/LocalDbManager.ts";
 import {useCallback, useEffect, useState} from "react";
 import {editFirebaseQuote, fetchAllFirebaseData} from "../../database/FirebaseDbManager.ts";
 import * as React from "react";
@@ -20,6 +20,20 @@ export const FavoritesScreen = (_props: Props) => {
     const [quoteData, setQuoteData] = useState<Quote[]>([])
     const [refreshing, setRefreshing] = useState(false)
     const isFocused = useIsFocused();
+
+    const editFavorite = (item: Quote) => {
+        setRefreshing(true)
+        if (!isFirebase) {
+            editLocalQuote(item.text, item.author, !item.isFavorite, item.id)
+            onRefreshData()
+        } else {
+            editFirebaseQuote(item.id, item.text, item.author, !item.isFavorite).then(() => {
+                onRefreshData()
+            }).catch(() => {
+                Alert.alert("Warning", "something wrong")
+            })
+        }
+    }
 
     const onRefreshData = useCallback(() => {
         setRefreshing(true);
@@ -64,10 +78,7 @@ export const FavoritesScreen = (_props: Props) => {
                 })
             },
             onFavorite: () => {
-                editFirebaseQuote(info.item.id, info.item.text, info.item.author, !info.item.isFavorite)
-                    .catch(() => {
-                        Alert.alert("Warning", "something wrong")
-                    })
+                editFavorite(info.item)
             }
         })
     }

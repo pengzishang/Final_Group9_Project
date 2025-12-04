@@ -15,13 +15,13 @@ export type QuoteStackParamList = {
     Favorites: undefined;
 };
 
-const {isFirebase} = isFirebaseStore()
 
 
 // the second screen, for quote list
 export function QuoteStackNavigator() {
 
 
+    const {isFirebase} = isFirebaseStore()
     const Stack = createNativeStackNavigator<QuoteStackParamList>()
 
     return (
@@ -41,6 +41,8 @@ export function QuoteStackNavigator() {
 // the third screen, reuse for favorite list
 export function FavoriteStackNavigator() {
 
+
+    const {isFirebase} = isFirebaseStore()
     const Stack = createNativeStackNavigator<QuoteStackParamList>()
     return (
         <Stack.Navigator initialRouteName={"Favorites"}>
